@@ -1,7 +1,7 @@
 [
   {
     "type": "post",
-    "url": "/:councils",
+    "url": "/councils/:councils",
     "title": "Create council",
     "version": "0.1.0",
     "name": "CreateCouncil",
@@ -75,12 +75,12 @@
         }
       ]
     },
-    "filename": "routes/api/v1/CRUDcouncilsRouter.ts",
+    "filename": "server/routes/api/v1/CRUDcouncilsRouter.ts",
     "groupTitle": "Council"
   },
   {
     "type": "delete",
-    "url": "/:councils/:id",
+    "url": "/councils/:councils/:id",
     "title": "Delete council",
     "version": "0.1.0",
     "name": "DeleteCouncil",
@@ -126,12 +126,12 @@
         }
       ]
     },
-    "filename": "routes/api/v1/CRUDcouncilsRouter.ts",
+    "filename": "server/routes/api/v1/CRUDcouncilsRouter.ts",
     "groupTitle": "Council"
   },
   {
     "type": "get",
-    "url": "/:faculty/:id",
+    "url": "/councils/:faculty/:id",
     "title": "Get all councils in a faculty.",
     "version": "0.1.0",
     "name": "GetCouncils",
@@ -207,7 +207,7 @@
         }
       ]
     },
-    "filename": "routes/api/v1/CRUDcouncilsRouter.ts",
+    "filename": "server/routes/api/v1/CRUDcouncilsRouter.ts",
     "groupTitle": "Council"
   },
   {
@@ -278,7 +278,7 @@
         }
       ]
     },
-    "filename": "routes/api/v1/CRUDcouncilInstRouter.ts",
+    "filename": "server/routes/api/v1/CRUDcouncilInstRouter.ts",
     "groupTitle": "CouncilInstance"
   },
   {
@@ -329,7 +329,7 @@
         }
       ]
     },
-    "filename": "routes/api/v1/CRUDcouncilInstRouter.ts",
+    "filename": "server/routes/api/v1/CRUDcouncilInstRouter.ts",
     "groupTitle": "CouncilInstance"
   },
   {
@@ -380,7 +380,7 @@
         }
       ]
     },
-    "filename": "routes/api/v1/CRUDcouncilInstRouter.ts",
+    "filename": "server/routes/api/v1/CRUDcouncilInstRouter.ts",
     "groupTitle": "CouncilInstance"
   },
   {
@@ -438,12 +438,12 @@
         }
       ]
     },
-    "filename": "routes/api/v1/CRUDcouncilInstRouter.ts",
+    "filename": "server/routes/api/v1/CRUDcouncilInstRouter.ts",
     "groupTitle": "CouncilInstance"
   },
   {
     "type": "patch",
-    "url": "/:councils/:id",
+    "url": "/councils/:councils/:id",
     "title": "Update council",
     "version": "0.1.0",
     "name": "UpdateCouncil",
@@ -496,7 +496,7 @@
         }
       ]
     },
-    "filename": "routes/api/v1/CRUDcouncilsRouter.ts",
+    "filename": "server/routes/api/v1/CRUDcouncilsRouter.ts",
     "groupTitle": "Council"
   },
   {
@@ -591,7 +591,7 @@
         }
       ]
     },
-    "filename": "routes/api/v1/CRUDemployeeRouter.ts",
+    "filename": "server/routes/api/v1/CRUDemployeeRouter.ts",
     "groupTitle": "Employee"
   },
   {
@@ -642,7 +642,7 @@
         }
       ]
     },
-    "filename": "routes/api/v1/CRUDemployeeRouter.ts",
+    "filename": "server/routes/api/v1/CRUDemployeeRouter.ts",
     "groupTitle": "Employee"
   },
   {
@@ -693,7 +693,7 @@
         }
       ]
     },
-    "filename": "routes/api/v1/CRUDemployeeRouter.ts",
+    "filename": "server/routes/api/v1/CRUDemployeeRouter.ts",
     "groupTitle": "Employee"
   },
   {
@@ -731,8 +731,274 @@
         }
       ]
     },
-    "filename": "routes/api/v1/CRUDemployeeRouter.ts",
+    "filename": "server/routes/api/v1/CRUDemployeeRouter.ts",
     "groupTitle": "Employee"
+  },
+  {
+    "type": "post",
+    "url": "employeePos/",
+    "title": "Create a employee position",
+    "version": "0.1.0",
+    "name": "CreateEmployeePosition",
+    "group": "EmployeePosition",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "EmployeeId",
+            "description": "<p>Employee unique ID.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "CouncilId",
+            "description": "<p>Council unique ID.</p>"
+          }
+        ],
+        "Boolean": [
+          {
+            "group": "Boolean",
+            "optional": false,
+            "field": "secretary",
+            "description": "<p>A boolean value that shows the employees position in the council.</p>"
+          },
+          {
+            "group": "Boolean",
+            "optional": false,
+            "field": "chairman",
+            "description": "<p>A boolean value that shows the employees position in the council.</p>"
+          },
+          {
+            "group": "Boolean",
+            "optional": false,
+            "field": "convener",
+            "description": "<p>A boolean value that shows the employees position in the council.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n  \"EmployeeId\": 1,\n  \"CouncilId\": 2,\n  \"secretary\": false,\n  \"chairman\": true,\n  \"convener\": false\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n\"payload\": {\n \"EmployeeId\": 2,\n \"CouncilId\": 2,\n \"secretary\": false,\n \"chairman\": true,\n \"convener\": false,\n \"createdAt\": \"2017-05-29T11:06:37.561Z\",\n \"updatedAt\": \"2017-05-29T11:07:33.116Z\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "NoEmployeePositionFound",
+            "description": "<p>No Employee Position found.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"NoEmployeePositionFound\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "server/routes/api/v1/CRUDemployeePositionsRouter.ts",
+    "groupTitle": "EmployeePosition"
+  },
+  {
+    "type": "delete",
+    "url": "employeePos/:councilId/:empId",
+    "title": "Delete a Employee position",
+    "version": "0.1.0",
+    "name": "DeleteEmployeePosition",
+    "group": "EmployeePosition",
+    "parameter": {
+      "fields": {
+        "uriParams": [
+          {
+            "group": "uriParams",
+            "type": "Number",
+            "optional": false,
+            "field": "councilId",
+            "description": "<p>Council Instance unique ID.</p>"
+          },
+          {
+            "group": "uriParams",
+            "type": "Number",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>User unique ID.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n\"payload\": {\n  \"CouncilId\": 1,\n  \"EmployeeId\": 1,\n  \"secretary\": false,\n  \"chairman\": true,\n  \"convener\": false,\n  \"createdAt\": \"2017-05-19T15:20:56.552Z\",\n  \"updatedAt\": \"2017-05-19T15:20:56.552Z\"\n }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "NoEmployeePositionFound",
+            "description": "<p>No Employee Position found.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"NoEmployeePositionFound\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "server/routes/api/v1/CRUDemployeePositionsRouter.ts",
+    "groupTitle": "EmployeePosition"
+  },
+  {
+    "type": "get",
+    "url": "employeePos/:councilId/:empId",
+    "title": "Get a Employee position",
+    "version": "0.1.0",
+    "name": "GetEmployeePosition",
+    "group": "EmployeePosition",
+    "parameter": {
+      "fields": {
+        "uriParams": [
+          {
+            "group": "uriParams",
+            "type": "Number",
+            "optional": false,
+            "field": "councilId",
+            "description": "<p>Council unique ID.</p>"
+          },
+          {
+            "group": "uriParams",
+            "type": "Number",
+            "optional": false,
+            "field": "empId",
+            "description": "<p>Employee unique ID.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n \"payload\": {\n \"EmployeeId\": 1,\n \"CouncilId\": 1,\n \"secretary\": false,\n \"chairman\": true,\n \"convener\": false\n}\n  }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "NoEmployeePositionFound",
+            "description": "<p>No Employee Position found.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"NoEmployeePositionFound\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "server/routes/api/v1/CRUDemployeePositionsRouter.ts",
+    "groupTitle": "EmployeePosition"
+  },
+  {
+    "type": "patch",
+    "url": "employeePos/:councilId/:empId",
+    "title": "Update a Employee position",
+    "version": "0.1.0",
+    "name": "UpdateEmployeePosition",
+    "group": "EmployeePosition",
+    "parameter": {
+      "fields": {
+        "uriParams": [
+          {
+            "group": "uriParams",
+            "type": "Number",
+            "optional": false,
+            "field": "councilId",
+            "description": "<p>Council Instance unique ID.</p>"
+          },
+          {
+            "group": "uriParams",
+            "type": "Number",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>User unique ID.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n  \"EmployeeId\": 2,\n  \"CouncilId\": 2,\n  \"secretary\": false,\n  \"chairman\": true,\n  \"convener\": false\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n\"payload\": {\n \"EmployeeId\": 2,\n \"CouncilId\": 2,\n \"secretary\": false,\n \"chairman\": true,\n \"convener\": false,\n \"createdAt\": \"2017-05-29T11:06:37.561Z\",\n \"updatedAt\": \"2017-05-29T11:07:33.116Z\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "NoEmployeePositionFound",
+            "description": "<p>No Employee Position found.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"NoEmployeePositionFound\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "server/routes/api/v1/CRUDemployeePositionsRouter.ts",
+    "groupTitle": "EmployeePosition"
   },
   {
     "type": "patch",
@@ -826,12 +1092,12 @@
         }
       ]
     },
-    "filename": "routes/api/v1/CRUDemployeeRouter.ts",
+    "filename": "server/routes/api/v1/CRUDemployeeRouter.ts",
     "groupTitle": "Employee"
   },
   {
     "type": "post",
-    "url": "/faculty/",
+    "url": "/faculties/",
     "title": "Create faculty",
     "version": "0.1.0",
     "name": "CreateFaculty",
@@ -881,7 +1147,7 @@
             "group": "Error 4xx",
             "optional": false,
             "field": "DuplicateFacultyName",
-            "description": "<p>There alredy exist a faculty with that name</p>"
+            "description": "<p>There already exist a faculty with that name</p>"
           }
         ]
       },
@@ -893,12 +1159,12 @@
         }
       ]
     },
-    "filename": "routes/api/v1/CRUDfacultiesRouter.ts",
+    "filename": "server/routes/api/v1/CRUDfacultiesRouter.ts",
     "groupTitle": "Faculty"
   },
   {
     "type": "delete",
-    "url": "/faculty/:id",
+    "url": "/faculties/:id",
     "title": "Delete faculty",
     "version": "0.1.0",
     "name": "DeleteFaculty",
@@ -944,7 +1210,7 @@
         }
       ]
     },
-    "filename": "routes/api/v1/CRUDfacultiesRouter.ts",
+    "filename": "server/routes/api/v1/CRUDfacultiesRouter.ts",
     "groupTitle": "Faculty"
   },
   {
@@ -995,12 +1261,12 @@
         }
       ]
     },
-    "filename": "routes/api/v1/CRUDfacultiesRouter.ts",
+    "filename": "server/routes/api/v1/CRUDfacultiesRouter.ts",
     "groupTitle": "Faculty"
   },
   {
     "type": "get",
-    "url": "/faculty/:id",
+    "url": "/faculties/:id",
     "title": "Get faculty",
     "version": "0.1.0",
     "name": "GetFaculty",
@@ -1046,12 +1312,12 @@
         }
       ]
     },
-    "filename": "routes/api/v1/CRUDfacultiesRouter.ts",
+    "filename": "server/routes/api/v1/CRUDfacultiesRouter.ts",
     "groupTitle": "Faculty"
   },
   {
     "type": "patch",
-    "url": "/faculty/:id",
+    "url": "/faculties/:id",
     "title": "Update faculty",
     "version": "0.1.0",
     "name": "patchFaculty",
@@ -1104,7 +1370,7 @@
         }
       ]
     },
-    "filename": "routes/api/v1/CRUDfacultiesRouter.ts",
+    "filename": "server/routes/api/v1/CRUDfacultiesRouter.ts",
     "groupTitle": "Faculty"
   },
   {
@@ -1219,7 +1485,7 @@
         }
       ]
     },
-    "filename": "routes/api/v1/CRUDusersRouter.ts",
+    "filename": "server/routes/api/v1/CRUDusersRouter.ts",
     "groupTitle": "User"
   },
   {
@@ -1270,7 +1536,7 @@
         }
       ]
     },
-    "filename": "routes/api/v1/CRUDusersRouter.ts",
+    "filename": "server/routes/api/v1/CRUDusersRouter.ts",
     "groupTitle": "User"
   },
   {
@@ -1321,7 +1587,7 @@
         }
       ]
     },
-    "filename": "routes/api/v1/CRUDusersRouter.ts",
+    "filename": "server/routes/api/v1/CRUDusersRouter.ts",
     "groupTitle": "User"
   },
   {
@@ -1359,8 +1625,276 @@
         }
       ]
     },
-    "filename": "routes/api/v1/CRUDusersRouter.ts",
+    "filename": "server/routes/api/v1/CRUDusersRouter.ts",
     "groupTitle": "User"
+  },
+  {
+    "type": "post",
+    "url": "userPosition/",
+    "title": "Create a User position",
+    "version": "0.1.0",
+    "name": "CreateUserPosition",
+    "group": "UserPosition",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "UserId",
+            "description": "<p>User unique ID.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "CouncilInstanceId",
+            "description": "<p>Council Instance unique ID.</p>"
+          }
+        ],
+        "String": [
+          {
+            "group": "String",
+            "optional": false,
+            "field": "from",
+            "description": "<p>A date object that shows the start of the period.</p>"
+          },
+          {
+            "group": "String",
+            "optional": false,
+            "field": "till",
+            "description": "<p>A date object that shows the end of the period.</p>"
+          }
+        ],
+        "Boolean": [
+          {
+            "group": "Boolean",
+            "optional": false,
+            "field": "elected",
+            "description": "<p>Whether the user is elected or not.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n  \"UserId\": 1,\n  \"CouncilInstanceId\": 1,\n  \"from\": \"2017-01-01T00:00:00.000Z\",\n  \"till\": \"2017-05-30T00:00:00.000Z\",\n  \"elected\": false\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n\"payload\": {\n \"UserId\": 1,\n \"CouncilInstanceId\": 1,\n \"from\": \"2017-01-01T00:00:00.000Z\",\n \"till\": \"2017-05-30T00:00:00.000Z\",\n \"elected\": false,\n \"createdAt\": \"2017-05-29T11:06:37.561Z\",\n \"updatedAt\": \"2017-05-29T11:07:33.116Z\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "NoUserPositionFound",
+            "description": "<p>No User Position found.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"NoUserPositionFound\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "server/routes/api/v1/CRUDUserPositionsRouter.ts",
+    "groupTitle": "UserPosition"
+  },
+  {
+    "type": "delete",
+    "url": "userPosition/:councilId/:userId",
+    "title": "Delete a User position",
+    "version": "0.1.0",
+    "name": "DeleteUserPosition",
+    "group": "UserPosition",
+    "parameter": {
+      "fields": {
+        "uriParams": [
+          {
+            "group": "uriParams",
+            "type": "Number",
+            "optional": false,
+            "field": "councilId",
+            "description": "<p>Council Instance unique ID.</p>"
+          },
+          {
+            "group": "uriParams",
+            "type": "Number",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>User unique ID.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n\"payload\": {\n  \"UserId\": 1,\n  \"CouncilInstanceId\": 1,\n  \"from\": \"2017-01-01T00:00:00.000Z\",\n  \"till\": \"2017-05-30T00:00:00.000Z\",\n  \"elected\": true,\n  \"createdAt\": \"2017-05-19T15:20:56.552Z\",\n  \"updatedAt\": \"2017-05-19T15:20:56.552Z\"\n }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "NoUserPositionFound",
+            "description": "<p>No User Position found.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"NoUserPositionFound\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "server/routes/api/v1/CRUDUserPositionsRouter.ts",
+    "groupTitle": "UserPosition"
+  },
+  {
+    "type": "get",
+    "url": "userPosition/:councilId/:userId",
+    "title": "Get a User position",
+    "version": "0.1.0",
+    "name": "GetUserPosition",
+    "group": "UserPosition",
+    "parameter": {
+      "fields": {
+        "uriParams": [
+          {
+            "group": "uriParams",
+            "type": "Number",
+            "optional": false,
+            "field": "councilId",
+            "description": "<p>Council Instance unique ID.</p>"
+          },
+          {
+            "group": "uriParams",
+            "type": "Number",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>User unique ID.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n \"payload\": {\n \"UserId\": 2,\n \"CouncilInstanceId\": 2,\n \"from\": \"2017-01-02T00:00:00.000Z\",\n \"till\": \"2017-05-29T00:00:00.000Z\",\n \"elected\": false\n}\n  }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "NoUserPositionFound",
+            "description": "<p>No User Position found.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"NoUserPositionFound\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "server/routes/api/v1/CRUDUserPositionsRouter.ts",
+    "groupTitle": "UserPosition"
+  },
+  {
+    "type": "patch",
+    "url": "userPosition/:councilId/:userId",
+    "title": "Update a User position",
+    "version": "0.1.0",
+    "name": "UpdateUserPosition",
+    "group": "UserPosition",
+    "parameter": {
+      "fields": {
+        "uriParams": [
+          {
+            "group": "uriParams",
+            "type": "Number",
+            "optional": false,
+            "field": "councilId",
+            "description": "<p>Council Instance unique ID.</p>"
+          },
+          {
+            "group": "uriParams",
+            "type": "Number",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>User unique ID.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n  \"UserId\": 1,\n  \"CouncilInstanceId\": 1,\n  \"from\": \"2018-01-01T00:00:00.000Z\",\n  \"till\": \"2018-05-30T00:00:00.000Z\",\n  \"elected\": false\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n\"payload\": {\n \"UserId\": 1,\n \"CouncilInstanceId\": 1,\n \"from\": \"2018-01-01T00:00:00.000Z\",\n \"till\": \"2018-05-30T00:00:00.000Z\",\n \"elected\": false,\n \"createdAt\": \"2017-05-17T19:27:17.342Z\",\n \"updatedAt\": \"2017-05-17T19:27:21.199Z\"\n}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "NoUserPositionFound",
+            "description": "<p>No User Position found.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"NoUserPositionFound\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "server/routes/api/v1/CRUDUserPositionsRouter.ts",
+    "groupTitle": "UserPosition"
   },
   {
     "type": "patch",
@@ -1483,7 +2017,7 @@
         }
       ]
     },
-    "filename": "routes/api/v1/CRUDusersRouter.ts",
+    "filename": "server/routes/api/v1/CRUDusersRouter.ts",
     "groupTitle": "User"
   }
 ]
