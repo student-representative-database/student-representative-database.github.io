@@ -384,6 +384,44 @@ define({ "api": [
     "groupTitle": "CouncilInstance"
   },
   {
+    "type": "get",
+    "url": "councilsinst/",
+    "title": "Get all Council Instances",
+    "version": "0.1.0",
+    "name": "GetCouncilInstance",
+    "group": "CouncilInstance",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n\"payload\": {\n \"id\": 1,\n \"councilId\": 1,\n \"from\": \"2017-01-01T00:00:00.000Z\",\n \"till\": \"2017-05-30T00:00:00.000Z\",\n \"Users\": [\n{\n \"id\": 1,\n  \"firstName\": \"Fredrik\",\n  \"lastName\": \"Olsson\",\n  \"birthDate\": \"1980-10-10T00:00:00.000Z\",\n  \"phd\": false,\n  \"phone\": \"0123456-123\",\n  \"email\": \"fredriko.olsson@gmail.com\",\n  \"graduationYear\": \"1970-01-01T00:00:02.018Z\",\n  \"program\": \"UDM\",\n  \"comments\": \"bla\",\n  \"UserPosition\": {\n    \"UserId\": 1,\n    \"CouncilInstanceId\": 1,\n    \"from\": \"2017-01-02T00:00:00.000Z\",\n    \"till\": \"2017-05-29T00:00:00.000Z\",\n    \"elected\": true,\n    \"createdAt\": \"2017-05-19T14:53:13.793Z\",\n    \"updatedAt\": \"2017-05-19T14:53:13.793Z\"\n  }\n},\n {...}\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "NoCouncilInstancesFound",
+            "description": "<p>No Council Instance found.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"NoCouncilInstancesFound\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "server/routes/api/v1/CRUDcouncilInstRouter.ts",
+    "groupTitle": "CouncilInstance"
+  },
+  {
     "type": "patch",
     "url": "/councilsinst/:id",
     "title": "Update council Instance",
@@ -1805,6 +1843,44 @@ define({ "api": [
         {
           "title": "Success-Response:",
           "content": "HTTP/1.1 200 OK\n{\n \"payload\": {\n \"UserId\": 2,\n \"CouncilInstanceId\": 2,\n \"from\": \"2017-01-02T00:00:00.000Z\",\n \"till\": \"2017-05-29T00:00:00.000Z\",\n \"elected\": false\n}\n  }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "NoUserPositionFound",
+            "description": "<p>No User Position found.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"NoUserPositionFound\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "server/routes/api/v1/CRUDUserPositionsRouter.ts",
+    "groupTitle": "UserPosition"
+  },
+  {
+    "type": "get",
+    "url": "userPosition/",
+    "title": "Get all User positions",
+    "version": "0.1.0",
+    "name": "GetUserPosition",
+    "group": "UserPosition",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n \"payload\": [\n {\n \"UserId\": 2,\n \"CouncilInstanceId\": 2,\n \"from\": \"2017-01-02T00:00:00.000Z\",\n \"till\": \"2017-05-29T00:00:00.000Z\",\n \"elected\": false\n}\n {...}\n ]\n  }",
           "type": "json"
         }
       ]
