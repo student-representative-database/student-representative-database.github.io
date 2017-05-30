@@ -334,24 +334,11 @@
   },
   {
     "type": "get",
-    "url": "councilsinst/:id/",
-    "title": "Get a Council Instance",
+    "url": "councilsinst/",
+    "title": "Get all Council Instances",
     "version": "0.1.0",
-    "name": "GetCouncilInstance",
+    "name": "GetAllCouncilInstances",
     "group": "CouncilInstance",
-    "parameter": {
-      "fields": {
-        "uriParams": [
-          {
-            "group": "uriParams",
-            "type": "Number",
-            "optional": false,
-            "field": "id",
-            "description": "<p>Council Instance unique ID.</p>"
-          }
-        ]
-      }
-    },
     "success": {
       "examples": [
         {
@@ -385,11 +372,24 @@
   },
   {
     "type": "get",
-    "url": "councilsinst/",
-    "title": "Get all Council Instances",
+    "url": "councilsinst/:id/",
+    "title": "Get a Council Instance",
     "version": "0.1.0",
     "name": "GetCouncilInstance",
     "group": "CouncilInstance",
+    "parameter": {
+      "fields": {
+        "uriParams": [
+          {
+            "group": "uriParams",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Council Instance unique ID.</p>"
+          }
+        ]
+      }
+    },
     "success": {
       "examples": [
         {
@@ -1813,6 +1813,44 @@
   },
   {
     "type": "get",
+    "url": "userPosition/",
+    "title": "Get all User positions",
+    "version": "0.1.0",
+    "name": "GetUserAllPositions",
+    "group": "UserPosition",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n \"payload\": [\n {\n \"UserId\": 2,\n \"CouncilInstanceId\": 2,\n \"from\": \"2017-01-02T00:00:00.000Z\",\n \"till\": \"2017-05-29T00:00:00.000Z\",\n \"elected\": false\n}\n {...}\n ]\n  }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "NoUserPositionFound",
+            "description": "<p>No User Position found.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"NoUserPositionFound\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "server/routes/api/v1/CRUDUserPositionsRouter.ts",
+    "groupTitle": "UserPosition"
+  },
+  {
+    "type": "get",
     "url": "userPosition/:councilId/:userId",
     "title": "Get a User position",
     "version": "0.1.0",
@@ -1843,44 +1881,6 @@
         {
           "title": "Success-Response:",
           "content": "HTTP/1.1 200 OK\n{\n \"payload\": {\n \"UserId\": 2,\n \"CouncilInstanceId\": 2,\n \"from\": \"2017-01-02T00:00:00.000Z\",\n \"till\": \"2017-05-29T00:00:00.000Z\",\n \"elected\": false\n}\n  }",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "NoUserPositionFound",
-            "description": "<p>No User Position found.</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"NoUserPositionFound\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "server/routes/api/v1/CRUDUserPositionsRouter.ts",
-    "groupTitle": "UserPosition"
-  },
-  {
-    "type": "get",
-    "url": "userPosition/",
-    "title": "Get all User positions",
-    "version": "0.1.0",
-    "name": "GetUserPosition",
-    "group": "UserPosition",
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n \"payload\": [\n {\n \"UserId\": 2,\n \"CouncilInstanceId\": 2,\n \"from\": \"2017-01-02T00:00:00.000Z\",\n \"till\": \"2017-05-29T00:00:00.000Z\",\n \"elected\": false\n}\n {...}\n ]\n  }",
           "type": "json"
         }
       ]
